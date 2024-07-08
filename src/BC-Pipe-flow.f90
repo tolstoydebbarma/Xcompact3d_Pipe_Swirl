@@ -1236,29 +1236,29 @@ contains
 	integer :: i,j,k
 	
 	! Constants
-	!REAL(mytype), parameter :: omega = 0.6d0  ! Angular velocity (adjust as needed)
+	REAL(mytype), parameter :: omega = 0.6d0  ! Angular velocity (adjust as needed)
   
-	!yc = yly / two
-    !zc = zlz / two
+	yc = yly / two
+    	zc = zlz / two
 
-    !do k = 1, xsize(3)
-	!   zm=real(xstart(3)-1+k-1,mytype)*dz-zc
-    !   do j = 1, xsize(2)
-	!      if (istret.eq.0) ym=real(j+xstart(2)-1-1,mytype)*dy-yc
-   	!	  if (istret.ne.0) ym=yp(j+xstart(2)-1)-yc
+    do k = 1, xsize(3)
+	   zm=real(xstart(3)-1+k-1,mytype)*dz-zc
+       do j = 1, xsize(2)
+	      if (istret.eq.0) ym=real(j+xstart(2)-1-1,mytype)*dy-yc
+   		  if (istret.ne.0) ym=yp(j+xstart(2)-1)-yc
 		  
-	!	  r=sqrt(ym*ym+zm*zm)
-	!	  theta_t=atan2(zm,ym)
-	!	  F_theta = omega*r		! Define the swirling force component in the tangential direction
+		  r=sqrt(ym*ym+zm*zm)
+		  theta_t=atan2(zm,ym)
+		  F_theta = omega*r		! Define the swirling force component in the tangential direction
           
-	!	  do i = 1, xsize(1)
-	!		 if (r.le.ra .and. ep1(i,j,k).eq.0) then
-	!			duy1(i, j, k, 1) = duy1(i, j, k, 1) - F_theta*sin(theta_t)
-	!			duz1(i, j, k, 1) = duz1(i, j, k, 1) + F_theta*cos(theta_t)
-	!		 endif
-	!	  enddo
-    !  enddo
-    !enddo
+		  do i = 1, xsize(1)
+			 if (r.le.ra .and. ep1(i,j,k).eq.0) then
+				duy1(i, j, k, 1) = duy1(i, j, k, 1) - F_theta*sin(theta_t)
+				duz1(i, j, k, 1) = duz1(i, j, k, 1) + F_theta*cos(theta_t)
+			 endif
+		  enddo
+      enddo
+    enddo
 	
 	return
 	
