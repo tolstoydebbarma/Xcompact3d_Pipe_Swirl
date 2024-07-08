@@ -638,8 +638,6 @@ contains
     integer                                             :: is,j,i,k,code
     character(len=30)                                   :: filename
 	
-	REAL(mytype), parameter :: omega = 0.6d0  ! Angular vel; Tolstoy-swirling
-	
     yc = yly / two
     zc = zlz / two
 
@@ -657,11 +655,7 @@ contains
             if (istret.eq.0) ym=real(j+xstart(2)-1-1,mytype)*dy-yc
             if (istret.ne.0) ym=yp(j+xstart(2)-1)-yc
             r=sqrt(ym*ym+zm*zm)   
-			! Tolstoy
-			theta_t=atan2(zm,ym)
-			F_theta = omega*r
-            ! Tolstoy
-			do i=1,xsize(1)
+	    do i=1,xsize(1)
                 if (r.le.ra.and.ep(i,j,k).eq.0) then
                     qm=qm+ux(i,j,k)
                     ncount=ncount+one
