@@ -257,11 +257,11 @@ CONTAINS
 
     ENDIF
 	
-	!IF (itype.EQ.itype_pipe) THEN
-	!
-	!   CALL momentum_forcing_pipe(duy1, duz1, uy1, uz1, ep1)	! tolstoy--swirling
-	!
-	!ENDIF
+	IF (itype.EQ.itype_pipe) THEN
+	
+	   CALL momentum_forcing_pipe(duy1, duz1, uy1, uz1, ep1)	! tolstoy--swirling
+	
+	ENDIF
 	
   ENDSUBROUTINE momentum_forcing
 
